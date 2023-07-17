@@ -22,7 +22,7 @@ const ContactList = ({ setSelectedContactId }) => {
         const data = await response.json();
         // console.log(data)
         setContacts(data)
-        console.log(contacts)
+        // console.log(contacts)
       }catch(error){
         console.log(`Error in fetchcontacts`, error)
       }
