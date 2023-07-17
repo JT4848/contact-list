@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import ContactRow from "./ContactRow";
 import {useEffect} from 'react'
 
+
 const dummyContacts = [
   { id: 1, name: "R2-D2", phone: "222-222-2222", email: "r2d2@droids.com" },
   { id: 2, name: "C-3PO", phone: "333-333-3333", email: "c3po@droids.com" },
@@ -9,8 +10,10 @@ const dummyContacts = [
 ];
 
 
-const ContactList = () => {
+const ContactList = ({ setSelectedContactId }) => {
   const [contacts, setContacts] = useState(dummyContacts)
+
+   
 
   useEffect(() => {
     const fetchContacts = async () => {
@@ -19,7 +22,7 @@ const ContactList = () => {
         const data = await response.json();
         // console.log(data)
         setContacts(data)
-        // console.log(contacts)
+        console.log(contacts)
       }catch(error){
         console.log(`Error in fetchcontacts`, error)
       }
@@ -44,7 +47,7 @@ const ContactList = () => {
             </tr>
             {
               contacts.map((contact) => {
-               return <ContactRow key={contact.id} contact={contact} />;
+               return <ContactRow key={contact.id} contact={contact} setSelectedContactId={setSelectedContactId}/>;
               })
             }
             
